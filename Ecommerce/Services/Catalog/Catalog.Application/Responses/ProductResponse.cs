@@ -1,16 +1,12 @@
 ﻿using Catalog.Core.Entities;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalog.Application.Responses
 {
     public record ProductResponse
     {
+        public string Id{ get; init; }
         public string Name { get; init; }
         public string Summary { get; init; }
 
@@ -23,5 +19,6 @@ namespace Catalog.Application.Responses
         [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; init; }
         public DateTimeOffset CreatedDate { get; init; }
+        
     }
 }

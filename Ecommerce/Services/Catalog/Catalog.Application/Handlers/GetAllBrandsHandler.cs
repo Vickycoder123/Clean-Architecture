@@ -2,16 +2,11 @@
 using Catalog.Application.Responses;
 using Catalog.Core.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using Catalog.Application.Mappers;
 
 namespace Catalog.Application.Handlers
 {
-    public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IList<BrandReponse>>
+    public class GetAllBrandsHandler : IRequestHandler<GetAllBrandsQuery, IList<BrandResponse>>
     {
         private readonly IBrandRepository _brandRepository;
 
@@ -19,7 +14,7 @@ namespace Catalog.Application.Handlers
         {
             _brandRepository = brandRepository;
         }
-        public async Task<IList<BrandReponse>> Handle(GetAllBrandsQuery request, CancellationToken cancellationToken)
+        public async Task<IList<BrandResponse>> Handle(GetAllBrandsQuery request, CancellationToken cancellationToken)
         {
             var brandList = await _brandRepository.GetAllBrands();
             return brandList.ToResponseList();

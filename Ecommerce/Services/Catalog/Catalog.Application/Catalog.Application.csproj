@@ -5,14 +5,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="14.2.0"/>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4"/>
+    <PackageReference Include="MediatR" Version="14.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Catalog.Core\Catalog.Core.csproj"/>
+    <ProjectReference Include="..\Catalog.Core\Catalog.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\"/>
-    <Folder Include="Mappers\"/>
+    <Folder Include="Commands\" />
+    <Folder Include="Mappers\" />
   </ItemGroup>
 </Project>
