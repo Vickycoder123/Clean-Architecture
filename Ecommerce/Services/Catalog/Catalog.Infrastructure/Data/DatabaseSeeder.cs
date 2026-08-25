@@ -8,7 +8,7 @@ namespace Catalog.Infrastructure.Data
 {
     public class DatabaseSeeder
     {
-        private static async Task SeedAsync(IOptions<DatabaseSettings> options)
+        public static async Task SeedAsync(IOptions<DatabaseSettings> options)
         {
             var settings = options.Value;
             var client = new MongoClient(settings.ConnectionString);
