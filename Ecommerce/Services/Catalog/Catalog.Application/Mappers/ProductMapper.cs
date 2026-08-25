@@ -1,4 +1,5 @@
 using Catalog.Application.Commands;
+using Catalog.Application.DTOs;
 using Catalog.Application.Responses;
 using Catalog.Core.Entities;
 using Catalog.Core.Specifications;
@@ -64,6 +65,53 @@ namespace Catalog.Application.Mappers
                 Brand = brand,
                 Price = command.Price,
                 CreatedDate = existing.CreatedDate
+            };
+
+
+        public static ProductDto ToDto(this ProductResponse product)
+        {
+            if(product == null)
+            {
+                return null;
+            }
+
+            return new ProductDto
+            (
+                product.Id,
+                product.Name,
+                product.Summary,
+                product.ImageFile,
+                product.Description,
+                new BrandDto(product.Brand.Id, product.Brand.Name),
+                new TypeDto(product.Type.Id, product.Type.Name),
+                product.Price,
+                DateTimeOffset.UtcNow
+            );
+        }
+
+        public static UpdateProductCommand ToCommand(this UpdateProductDto dto, string id) =>
+            new UpdateProductCommand
+            {
+                Id = id,
+                Name = dto.Name,
+                Summary = dto.Summary,
+                Description = dto.Description,
+                ImageFile = dto.ImageFile,
+                BrandId = dto.BrandId,
+                TypeId = dto.TypeId,
+                Price = dto.Price
+            };
+
+        public static CreateProductCommand ToCommand(this CreateProductDto dto) =>
+            new CreateProductCommand
+            {
+                Name = dto.Name,
+                Summary = dto.Summary,
+                Description = dto.Description,                  
+                ImageFile = dto.ImageFile,
+                BrandId = dto.BrandId,
+                TypeId = dto.TypeId,
+                Price = dto.Price
             };
     }
 }
