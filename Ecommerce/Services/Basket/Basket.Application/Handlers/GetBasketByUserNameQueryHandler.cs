@@ -20,10 +20,10 @@ namespace Basket.Application.Handlers
             if (shoppingCart == null)
             {
                 return new ShoppingCartResponse(request.UserName){
-                    Items = new List<ShoppingCartItemResponses>()
+                    Items = new List<ShoppingCartItemResponse>()
                 };
             }
-            return shoppingCart.ToResponse();
+            return shoppingCart.ToShoppingCartResponse();
         }
     }
 }

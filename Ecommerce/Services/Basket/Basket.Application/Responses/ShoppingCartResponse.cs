@@ -3,24 +3,24 @@ namespace Basket.Application.Responses
     public record class ShoppingCartResponse
     {
         public string UserName { get; init; }
-        public List<ShoppingCartItemResponses> Items { get; init; } = new List<ShoppingCartItemResponses>();
+        public List<ShoppingCartItemResponse> Items { get; init; } = new List<ShoppingCartItemResponse>();
         public ShoppingCartResponse()
         {
             UserName = string.Empty;
-            Items = new List<ShoppingCartItemResponses>();
+            Items = new List<ShoppingCartItemResponse>();
         }
 
         // ctor with username only
-        public ShoppingCartResponse(string userName) : this(userName, new List<ShoppingCartItemResponses>())
+        public ShoppingCartResponse(string userName) : this(userName, new List<ShoppingCartItemResponse>())
         {
             
         }
         
         // Fulll ctor with username and items
-        public ShoppingCartResponse(string userName, List<ShoppingCartItemResponses> items)
+        public ShoppingCartResponse(string userName, List<ShoppingCartItemResponse> items)
         {
             UserName = userName;
-            Items = items ?? new List<ShoppingCartItemResponses>();
+            Items = items ?? new List<ShoppingCartItemResponse>();
         }
         
         public decimal TotalPrice => Items.Sum(item => item.Price * item.Quantity);
